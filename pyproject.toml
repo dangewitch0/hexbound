@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "hexbound"
+version = "0.1.0"
+description = "A terminal-based color palette manager that extracts and exports hex themes from images or URLs."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+dependencies = [
+    "Pillow>=10.0.0",
+    "numpy>=1.26.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+]
+
+[project.scripts]
+hexbound = "hexbound.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["hexbound/tests"]
+addopts = "--tb=short"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["hexbound*"]
